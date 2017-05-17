@@ -38,7 +38,15 @@ class EventPusher
     {
         $this->event = $event;
         $this->transport = new EventPusherTransport(new Config());
-        $this->transport->setAuth('login','password');
-        $this->transport->run($event);
+    }
+
+    /**
+     * send
+     *
+     * @return void
+     */
+    public function send()
+    {
+        $this->transport->run($this->event);
     }
 }

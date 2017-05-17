@@ -22,9 +22,27 @@ namespace unklefedor\EventPusher;
  */
 class Config
 {
-    private $api_id = '8lwRMq';
-    private $api_secret = 'nQhYGDgvg402aSIxFQQZifx7Ox8Omwgb';
+    private $api_id = '';
+    private $api_secret = '';
     private $monitor_url = 'http://monitoring.breadhead.ru/eventer/pushevent';
+    private $http_login = '';
+    private $http_password = '';
+
+    /**
+     * @return string
+     */
+    public function getHttpLogin()
+    {
+        return $this->http_login;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHttpPassword()
+    {
+        return $this->http_password;
+    }
 
     /**
      * @return string

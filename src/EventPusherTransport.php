@@ -50,6 +50,7 @@ class EventPusherTransport
     {
         $this->initTransport();
         $this->setRequest();
+        $this->setAuth();
     }
 
     /**
@@ -90,14 +91,13 @@ class EventPusherTransport
     /**
      * setAuth
      *
-     * @param        $login
-     * @param string $pass
-     *
      * @return $this
      */
-    public function setAuth($login, $pass = '')
+    private function setAuth()
     {
-        $this->headers[] = "Authorization: Basic " . $login . ':' . $pass;
+        if ($this->config->getHttpLogin() && $this->config->getHttpPassword()) {
+            $this->headers[] = "Authorization: Basic " . $this->config->getHttpLogin() . ':' . $this->config->getHttpPassword();
+        }
 
         return $this;
     }
