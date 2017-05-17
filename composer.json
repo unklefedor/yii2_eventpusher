@@ -8,5 +8,8 @@
       "name": "unklefedor",
       "email": "unklefedor@gmail.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": { "breadhead\\eventpusher\\": "" }
+  }
 }
