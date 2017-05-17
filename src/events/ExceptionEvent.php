@@ -14,8 +14,6 @@
 
 namespace unklefedor\EventPusher\events;
 
-use yii\base\Exception;
-
 /** ExceptionEvent
  *
  * Class ExceptionEvent
@@ -24,7 +22,7 @@ use yii\base\Exception;
  */
 class ExceptionEvent implements EventInterface
 {
-    /** @var yii\base\Exception $exception*/
+    /** @var \Exception $exception*/
     private $exception = null;
     private $data = [
         'event' => [

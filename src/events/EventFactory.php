@@ -14,8 +14,6 @@
 
 namespace unklefedor\EventPusher\events;
 
-use yii\base\Exception;
-
 /** EventFactory
  *
  * Class EventFactory
@@ -27,11 +25,11 @@ class EventFactory
     /**
      * getExceptionEvent
      *
-     * @param Exception $exception
+     * @param \Exception $exception
      *
      * @return ExceptionEvent
      */
-    public static function getExceptionEvent(Exception $exception)
+    public static function getExceptionEvent(\Exception $exception)
     {
         return new ExceptionEvent($exception);
     }
