@@ -12,7 +12,7 @@
  * @link       http://breadhead.ru
  */
 
-namespace unklefedor\EventPusher\events;
+namespace unklefedor\eventpusher\events;
 
 /**
  * Interface EventInterface

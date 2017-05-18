@@ -12,7 +12,7 @@
  * @link       http://breadhead.ru
  */
 
-namespace unklefedor\EventPusher;
+namespace unklefedor\eventpusher;
 
 /** Config
  *
