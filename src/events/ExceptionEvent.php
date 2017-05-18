@@ -25,16 +25,8 @@ class ExceptionEvent implements EventInterface
     /** @var \Exception $exception*/
     private $exception = null;
     private $data = [
-        'event' => [
-            'level' => 'error',
-            'type' => 'exception',
-            'code' => 0,
-            'server' => [],
-            'request' => [],
-            'timestamp' => 0,
-            'url' => '',
-            'text' => ''
-        ]
+        'level' => 'error',
+        'type' => 'exception'
     ];
 
     /**
@@ -56,7 +48,7 @@ class ExceptionEvent implements EventInterface
     {
         $this->refactorData();
 
-        return $this->data;
+        return json_encode($this->data);
     }
 
     /**
@@ -66,6 +58,7 @@ class ExceptionEvent implements EventInterface
      */
     private function refactorData()
     {
+        $this->data['ip'] = isset($_SERVER['HTTP_X_REAL_IP'])?$_SERVER['HTTP_X_REAL_IP']:$_SERVER['REMOTE_ADDR'];
         $this->data['code'] = $this->exception->getCode();
         $this->data['server'] = $_SERVER;
         $this->data['request'] = $_REQUEST;

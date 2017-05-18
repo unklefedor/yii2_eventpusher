@@ -84,22 +84,19 @@ class EventPusherTransport
      */
     private function setRequest()
     {
-        $this->headers[] = "Content-type: plain/text";
         curl_setopt($this->transport, CURLOPT_CUSTOMREQUEST, "POST");
     }
 
     /**
      * setAuth
      *
-     * @return $this
+     * @return void
      */
     private function setAuth()
     {
         if ($this->config->getHttpLogin() && $this->config->getHttpPassword()) {
-            $this->headers[] = "Authorization: Basic " . $this->config->getHttpLogin() . ':' . $this->config->getHttpPassword();
+            curl_setopt($this->transport, CURLOPT_USERPWD, $this->config->getHttpLogin() . ":" . $this->config->getHttpPassword());
         }
-
-        return $this;
     }
 
     /**
@@ -112,8 +109,8 @@ class EventPusherTransport
     public function run(EventInterface $event)
     {
         $data = [
-            'api_key' => $this->config->getApiId(),
-            'hash_key' => $this->generateKey($event->getData()),
+            'api_id' => $this->config->getApiId(),
+            'hash_key' => $this->generateKey($event),
             'event' => $event->getData()
         ];
 
@@ -133,7 +130,7 @@ class EventPusherTransport
      */
     private function generateKey(EventInterface $event)
     {
-        return md5($this->config->getApiId().'-'.$this->config->getApiSecret()).'-'.md5(var_export($event->getData(), true));
+        return md5($this->config->getApiId().'-'.$this->config->getApiSecret()).'-'.md5($event->getData());
     }
 
     /**
