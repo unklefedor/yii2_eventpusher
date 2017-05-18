@@ -1,5 +1,5 @@
 {
-  "name": "unklefedor/eventpusher",
+  "name": "unklefedor/yii2_eventpusher",
   "description": "Module for Yii2. Push error events to monitor via web interface.",
   "minimum-stability": "stable",
   "license": "proprietary",
