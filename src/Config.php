@@ -22,6 +22,7 @@ namespace unklefedor\eventpusher;
  */
 class Config
 {
+    private $site_url = '';
     private $api_id = '';
     private $api_secret = '';
     private $monitor_url = 'http://monitoring.breadhead.ru/eventer/pushevent';
@@ -66,5 +67,13 @@ class Config
     public function getMonitorUrl()
     {
         return $this->monitor_url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiteUrl()
+    {
+        return $this->site_url;
     }
 }

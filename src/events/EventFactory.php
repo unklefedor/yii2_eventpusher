@@ -33,4 +33,9 @@ class EventFactory
     {
         return new ExceptionEvent($exception);
     }
+
+    public static function getOrderEvent()
+    {
+        return new OrderEvent();
+    }
 }
