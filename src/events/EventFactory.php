@@ -36,6 +36,6 @@ class EventFactory
 
     public static function getOrderEvent()
     {
-        return new OrderEvent();
+        return new OrderEvent([]);
     }
 }

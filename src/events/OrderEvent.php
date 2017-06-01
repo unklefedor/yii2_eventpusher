@@ -19,16 +19,13 @@ class OrderEvent implements EventInterface
         'type' => 'order',
         'text' => 'Заказ отправлен'
     ];
-    private $order;
 
     /**
      * EventInterface constructor.
-     *
      * @param $data
      */
     public function __construct($data)
     {
-        $this->order = $data;
         $this->config = new Config();
     }
 
@@ -50,10 +47,6 @@ class OrderEvent implements EventInterface
      */
     private function refactorData()
     {
-        $this->data['ip'] = isset($_SERVER['HTTP_X_REAL_IP'])?$_SERVER['HTTP_X_REAL_IP']:$_SERVER['REMOTE_ADDR'];
-        $this->data['code'] = 0;
-        $this->data['server'] = $_SERVER;
-        $this->data['request'] = $_REQUEST;
         $this->data['timestamp'] = time();
         $this->data['url'] = $this->config->getSiteUrl();
     }
